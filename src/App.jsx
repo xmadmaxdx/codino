@@ -87,7 +87,7 @@ const Home = () => {
                   </div>
 
                   {/* Status Note */}
-                  <div className="flex items-start gap-4 p-6 rounded-2xl border border-white/5 bg-white/[0.03] max-w-sm backdrop-blur-sm">
+                  <div className="flex items-start gap-4 p-6 rounded-2xl border border-white/5 bg-bg-deep max-w-sm">
                     <div className="mt-1">
                       <Info size={20} className="text-primary" />
                     </div>
@@ -108,7 +108,7 @@ const Home = () => {
             style={{ willChange: "transform, opacity" }}
             className="relative"
           >
-            <div className="absolute -inset-24 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
+            {/* Blur effect removed for performance */}
 
             <div className="relative z-10 flex justify-center lg:justify-end">
               <div className="w-[320px] h-auto p-2 bg-[#111] rounded-[3.5rem] border-[10px] border-[#1A1A1A] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10">

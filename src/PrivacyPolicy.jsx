@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen bg-bg-deep text-white font-sans selection:bg-primary/30">
-            <nav className="fixed top-0 left-0 right-0 h-24 flex items-center px-8 sm:px-20 z-50 backdrop-blur-md border-b border-white/5">
+            <nav className="fixed top-0 left-0 right-0 h-24 flex items-center px-8 sm:px-20 z-50 bg-bg-deep/90 border-b border-white/5">
                 <Link to="/" className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors group text-sm uppercase tracking-widest font-medium">
                     <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
                     Back to Home
