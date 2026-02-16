@@ -1,12 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, Mail, ExternalLink } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+// Pages
+import PrivacyPolicy from './PrivacyPolicy';
 
 // Assets
 import logo from './assets/logo.png';
 import mobileHero from './assets/mobile.jpg';
 
-function App() {
+const Home = () => {
   return (
     <div className="min-h-screen bg-bg-deep text-white font-sans selection:bg-primary/30 overflow-x-hidden">
       {/* Navigation */}
@@ -126,14 +130,12 @@ function App() {
           <span>&copy; 2026 CODINO.</span>
         </div>
         <div className="flex flex-wrap justify-center gap-12">
-          <a
-            href="https://www.termsfeed.com/live/b72b2102-e3da-44ac-bd73-30afc45c92f7"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/privacy"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             Privacy Policy <ExternalLink size={12} />
-          </a>
+          </Link>
           <a
             href="mailto:madmaxsecondac@gmail.com"
             className="hover:text-white transition-colors flex items-center gap-2"
@@ -143,6 +145,17 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+      </Routes>
+    </Router>
   );
 }
 
