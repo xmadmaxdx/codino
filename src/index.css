@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7B3FE4;
+  --color-secondary: #00D084;
+  --color-accent: #FFB800;
+  --color-bg-deep: #030305;
+}
+
+:root {
+  --bg-deep: #030305;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0B0;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  /* Very subtle, simple glow */
+  background-image: radial-gradient(circle at 50% 0%, rgba(123, 63, 228, 0.03) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+/* Gradient Text Utility */
+.text-gradient {
+  background: linear-gradient(135deg, #7B3FE4 0%, #BF9DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(135deg, #eee 0%, #999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 3D Button Utility */
+.btn-3d {
+  position: relative;
+  transition: all 0.1s ease;
+  top: 0;
+}
+
+.btn-3d:active {
+  top: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
