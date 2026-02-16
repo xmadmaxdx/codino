@@ -37,9 +37,10 @@ function App() {
 
           {/* Content Block */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "circOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
           >
             <h1 className="text-7xl sm:text-8xl lg:text-9xl font-medium leading-[0.8] tracking-tighter mb-10 text-white">
               Learn <br />
@@ -97,12 +98,13 @@ function App() {
 
           {/* Phone Block */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
             className="relative"
           >
-            <div className="absolute -inset-24 bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
+            <div className="absolute -inset-24 bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 flex justify-center lg:justify-end">
               <div className="w-[320px] h-auto p-2 bg-[#111] rounded-[3.5rem] border-[10px] border-[#1A1A1A] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10">
