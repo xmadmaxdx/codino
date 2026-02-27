@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Info, Mail, ExternalLink } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import logo from './assets/logo.png';
 import mobileHero from './assets/mobile.png';
 
 const Home = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div className="min-h-screen bg-bg-deep text-white font-sans selection:bg-primary/30 overflow-x-hidden">
       {/* Navigation */}
@@ -37,7 +39,7 @@ const Home = () => {
       </nav>
 
       <main className="max-w-7xl mx-auto px-8 sm:px-20 pt-32 sm:pt-48 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
 
           {/* Content Block */}
           <motion.div
@@ -93,27 +95,134 @@ const Home = () => {
           </motion.div>
 
           {/* Phone Block */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            style={{ willChange: "transform, opacity" }}
-            className="relative"
-          >
-            {/* Blur effect removed for performance */}
-
+          <div className="relative">
             <div className="relative z-10 flex justify-center lg:justify-end">
-              <div className="w-[340px] h-auto pointer-events-none select-none">
-                <img
+              <div className="w-[340px] aspect-[1/2] relative pointer-events-none select-none">
+                <AnimatePresence>
+                  {!isLoaded && (
+                    <motion.div
+                      key="skeleton"
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-white/5 rounded-[3rem] overflow-hidden"
+                    >
+                      <motion.div
+                        animate={{ x: ['-100%', '100%'] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                        className="w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent shadow-[0_0_100px_rgba(255,255,255,0.05)]"
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <motion.img
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{
+                    opacity: isLoaded ? 1 : 0,
+                    scale: isLoaded ? 1 : 0.98
+                  }}
+                  transition={{ duration: 1, ease: "easeOut" }}
                   src={mobileHero}
                   alt="Codino App Preview"
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain relative z-20"
+                  onLoad={() => setIsLoaded(true)}
+                  fetchpriority="high"
+                  loading="eager"
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
+
+        {/* FAQ Section - Bento Style Premium Layout */}
+        <section className="mt-48">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">Common Questions</h2>
+            <p className="text-text-secondary uppercase tracking-[0.3em] text-[0.6rem] font-bold">Transparency & Accessibility</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-6xl mx-auto">
+            {/* Free Status - Large Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="md:col-span-4 p-10 rounded-[2.5rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/5 flex flex-col justify-between group overflow-hidden relative"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] group-hover:bg-primary/10 transition-colors" />
+              <div>
+                <h3 className="text-2xl font-medium mb-6">Is Codino actually 100% free?</h3>
+                <p className="text-text-secondary leading-relaxed max-w-lg">
+                  Absolutely. We believe high-quality coding education should be accessible to everyone. Learn Python, complete every lesson, and earn your certificate—all at zero cost. No hidden fees, no subscriptions.
+                </p>
+              </div>
+              <div className="mt-12 flex items-center gap-3 text-[0.65rem] font-bold tracking-[0.2em] text-primary uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> No Strings Attached
+              </div>
+            </motion.div>
+
+            {/* Certificate - Small Square Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="md:col-span-2 p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 flex flex-col justify-between"
+            >
+              <h3 className="text-2xl font-medium mb-6 leading-tight">Can I get a certificate?</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Yes! Upon finishing the full curriculum, you'll receive a professional certificate to showcase your Python mastery.
+              </p>
+            </motion.div>
+
+            {/* Offline IDE - Narrow Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="md:col-span-3 p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 flex flex-col gap-6"
+            >
+              <h3 className="text-2xl font-medium leading-tight">Does it work offline?</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Codino features a full-fledged offline Python IDE. Write, test, and execute code anywhere in the world—even with zero internet.
+              </p>
+            </motion.div>
+
+            {/* Curriculum - Wide Card */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="md:col-span-3 p-10 rounded-[2.5rem] bg-gradient-to-tr from-primary/[0.03] to-transparent border border-white/5 flex flex-col justify-between"
+            >
+              <div>
+                <h3 className="text-2xl font-medium mb-6">What can I learn?</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Our high-end curriculum covers everything from Python fundamentals and logic down to advanced data structures and professional practices.
+                </p>
+              </div>
+              <div className="mt-6 text-[0.6rem] text-white/30 tracking-widest uppercase font-bold text-right pt-4 border-t border-white/5">
+                Comprehensive Syllabus
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </main>
+
+
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-8 sm:px-20 py-24 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-12 text-[0.7rem] font-medium text-text-muted uppercase tracking-[0.2em]">
