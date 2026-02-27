@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Info, Mail, ExternalLink } from 'lucide-react';
+import { Info, Mail, ExternalLink, Sparkles } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // Pages
@@ -10,11 +10,57 @@ import PrivacyPolicy from './PrivacyPolicy';
 import logo from './assets/logo.png';
 import mobileHero from './assets/mobile.png';
 
+const BackgroundDecor = () => (
+  <div className="fixed inset-0 pointer-events-none overflow-hidden select-none -z-10 isolate">
+    {/* Floating Stars / Sparkles */}
+    <motion.div
+      animate={{
+        y: [0, -20, 0],
+        opacity: [0.3, 0.6, 0.3]
+      }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-[15%] left-[10%] text-primary/30"
+    >
+      <Sparkles size={32} />
+    </motion.div>
+
+    <motion.div
+      animate={{
+        y: [0, 30, 0],
+        opacity: [0.2, 0.4, 0.2]
+      }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      className="absolute top-[40%] right-[15%] text-primary/20"
+    >
+      <Sparkles size={48} rotate={45} />
+    </motion.div>
+
+    <motion.div
+      animate={{
+        scale: [1, 1.2, 1],
+        opacity: [0.1, 0.3, 0.1]
+      }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      className="absolute bottom-[20%] left-[20%] text-white/10"
+    >
+      <Sparkles size={24} />
+    </motion.div>
+
+    {/* Technical Geometric Lines */}
+    <div className="absolute top-[20%] right-[10%] w-[1px] h-64 bg-gradient-to-b from-transparent via-white/5 to-transparent rotate-45" />
+    <div className="absolute bottom-[30%] left-[5%] w-[1px] h-96 bg-gradient-to-b from-transparent via-primary/10 to-transparent -rotate-12" />
+
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/[0.02] rounded-full scale-[1.5]" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/[0.01] rounded-full scale-[1.2]" />
+  </div>
+);
+
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className="min-h-screen bg-bg-deep text-white font-sans selection:bg-primary/30 overflow-x-hidden">
+      <BackgroundDecor />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 h-24 flex items-center justify-between px-8 sm:px-20 z-50">
         <div className="flex items-center gap-3">
