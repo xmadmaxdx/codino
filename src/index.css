@@ -4,11 +4,11 @@
   --color-primary: #7B3FE4;
   --color-secondary: #00D084;
   --color-accent: #FFB800;
-  --color-bg-deep: #030305;
+  --color-bg-deep: #0a0a0c;
 }
 
 :root {
-  --bg-deep: #030305;
+  --bg-deep: #0a0a0c;
   --text-primary: #FFFFFF;
   --text-secondary: #A0A0B0;
 

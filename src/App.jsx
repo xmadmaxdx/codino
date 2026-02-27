@@ -86,15 +86,7 @@ const Home = () => {
                     </motion.a>
                   </div>
 
-                  {/* Status Note */}
-                  <div className="flex items-start gap-4 p-6 rounded-2xl border border-white/5 bg-bg-deep max-w-sm">
-                    <div className="mt-1">
-                      <Info size={20} className="text-primary" />
-                    </div>
-                    <p className="text-[0.75rem] font-normal leading-relaxed text-text-secondary italic">
-                      The link will work when the app goes to production currently in closed testing, will be on production within few days
-                    </p>
-                  </div>
+
                 </div>
               </div>
             </div>
