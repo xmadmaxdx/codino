@@ -8,7 +8,7 @@ import PrivacyPolicy from './PrivacyPolicy';
 
 // Assets
 import logo from './assets/logo.png';
-import mobileHero from './assets/mobile.jpg';
+import mobileHero from './assets/mobile.png';
 
 const Home = () => {
   return (
@@ -103,11 +103,11 @@ const Home = () => {
             {/* Blur effect removed for performance */}
 
             <div className="relative z-10 flex justify-center lg:justify-end">
-              <div className="w-[320px] h-auto p-2 bg-[#111] rounded-[3.5rem] border-[10px] border-[#1A1A1A] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10">
+              <div className="w-[340px] h-auto pointer-events-none select-none">
                 <img
                   src={mobileHero}
                   alt="Codino App Preview"
-                  className="w-full h-full object-cover rounded-[2.8rem]"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
