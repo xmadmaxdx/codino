@@ -85,7 +85,7 @@ const Home = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
 
           {/* Flying Codino Image — Left */}
-          <div className="relative flex justify-center lg:justify-start">
+          <div className="relative flex justify-center lg:justify-start -mt-16">
             <motion.img
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
