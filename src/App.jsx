@@ -76,7 +76,7 @@ const Home = () => {
               whileTap={{ y: 2 }}
               href="https://play.google.com/store/apps/details?id=com.codino_official2.codino"
               target="_blank"
-              className="relative block bg-primary text-white text-[0.7rem] font-bold uppercase tracking-[0.2em] px-8 py-3 rounded-xl shadow-[0_4px_0_#4c2496] active:shadow-none active:translate-y-[4px] transition-all border border-white/10 hover:brightness-110"
+              className="relative block bg-primary text-white text-[0.7rem] font-bold uppercase tracking-[0.2em] px-8 py-3 rounded-xl shadow-[0_4px_0_#1a7090] active:shadow-none active:translate-y-[4px] transition-all border border-white/10 hover:brightness-110"
             >
               Get App
             </motion.a>

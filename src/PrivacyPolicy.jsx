@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
                     style={{
                         '--tw-prose-body': isDark ? '#A0A0B0' : '#4B5563',
                         '--tw-prose-headings': isDark ? '#FFFFFF' : '#1A1A1A',
-                        '--tw-prose-bullets': '#7B3FE4',
+                        '--tw-prose-bullets': '#2596be',
                     }}
                 >
                     <section>

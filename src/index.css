@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #7B3FE4;
+  --color-primary: #2596be;
   --color-secondary: #00D084;
   --color-accent: #FFB800;
   --color-bg-deep: #141414;
@@ -67,7 +67,7 @@ h3 {
 
 /* Gradient Text Utility */
 .text-gradient {
-  background: linear-gradient(135deg, #7B3FE4 0%, #BF9DFF 100%);
+  background: linear-gradient(135deg, #2596be 0%, #6ECFF6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
