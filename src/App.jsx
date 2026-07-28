@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Info, Mail, ExternalLink, Sparkles } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, ExternalLink, Sparkles } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // Pages
@@ -8,7 +8,7 @@ import PrivacyPolicy from './PrivacyPolicy';
 
 // Assets
 import logo from './assets/logo.png';
-import mobileHero from './assets/mobile.png';
+import codinoFlying from '../assets/codino_flying.png';
 
 const BackgroundDecor = () => (
   <div className="fixed inset-0 pointer-events-none overflow-hidden select-none -z-10 isolate">
@@ -56,8 +56,6 @@ const BackgroundDecor = () => (
 );
 
 const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   return (
     <div className="min-h-screen bg-bg-deep text-white font-sans selection:bg-primary/30 overflow-x-hidden">
       <BackgroundDecor />
@@ -68,7 +66,6 @@ const Home = () => {
           <span className="text-2xl font-semibold tracking-tighter uppercase hidden sm:block">Codino</span>
         </div>
         <div className="flex gap-10">
-          {/* Navigation cleaned up as requested */}
           <div className="relative group">
             <div className="absolute inset-0 bg-primary/20 rounded-xl translate-y-[3px]" />
             <motion.a
@@ -87,7 +84,19 @@ const Home = () => {
       <main className="max-w-7xl mx-auto px-8 sm:px-20 pt-32 sm:pt-48 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
 
-          {/* Content Block */}
+          {/* Flying Codino Image — Left */}
+          <div className="relative flex justify-center lg:justify-start">
+            <motion.img
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              src={codinoFlying}
+              alt="Codino Flying"
+              className="w-full max-w-[500px] h-auto object-contain drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Content Block — Right */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,52 +142,10 @@ const Home = () => {
                       </div>
                     </motion.a>
                   </div>
-
-
                 </div>
               </div>
             </div>
           </motion.div>
-
-          {/* Phone Block */}
-          <div className="relative">
-            <div className="relative z-10 flex justify-center lg:justify-end">
-              <div className="w-[340px] aspect-[1/2] relative pointer-events-none select-none">
-                <AnimatePresence>
-                  {!isLoaded && (
-                    <motion.div
-                      key="skeleton"
-                      initial={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="absolute inset-0 bg-white/5 rounded-[3rem] overflow-hidden"
-                    >
-                      <motion.div
-                        animate={{ x: ['-100%', '100%'] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent shadow-[0_0_100px_rgba(255,255,255,0.05)]"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <motion.img
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{
-                    opacity: isLoaded ? 1 : 0,
-                    scale: isLoaded ? 1 : 0.98
-                  }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  src={mobileHero}
-                  alt="Codino App Preview"
-                  className="w-full h-auto object-contain relative z-20"
-                  onLoad={() => setIsLoaded(true)}
-                  fetchpriority="high"
-                  loading="eager"
-                />
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* FAQ Section - Bento Style Premium Layout */}
