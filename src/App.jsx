@@ -85,14 +85,14 @@ const Home = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
 
           {/* Flying Codino Image — Left */}
-          <div className="relative flex justify-center lg:justify-start -mt-32">
+          <div className="relative flex justify-center lg:justify-start -mt-8 sm:-mt-16 lg:-mt-48">
             <motion.img
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               src={codinoFlying}
               alt="Codino Flying"
-              className="w-full max-w-[650px] h-auto object-contain drop-shadow-2xl"
+              className="w-full max-w-[280px] sm:max-w-[420px] lg:max-w-[750px] h-auto object-contain drop-shadow-2xl"
             />
           </div>
 
